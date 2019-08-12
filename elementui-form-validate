@@ -1,0 +1,6 @@
+###clearValidate
+this.$refs.editform.clearValidate("window");
+this.$refs[getRefWays][0].clearValidate()
+
+###resetForm
+this.$refs.editform.resetFields();
