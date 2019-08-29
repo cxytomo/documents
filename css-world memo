@@ -34,3 +34,47 @@ img:hover::after {
 }
 ```
 后面给图片加上src属性，伪元素失效。完美加载完成
+
+2. 垂直分隔符
+a + a:before {
+    content: "";
+    font-size: 0;
+    padding: 10px 3px 1px;
+    margin-left: 6px;
+    border-left: 1px solid gray;
+}
+
+3. CSS计数器counters的string参数与嵌套实例页面
+```
+<div class="reset">
+    <div class="counter">我是王小二
+        <div class="reset">
+            <div class="counter">我是王小二的大儿子</div>
+            <div class="counter">我是王小二的二儿子
+                <div class="reset">
+                    <div class="counter">我是王小二的二儿子的大孙子</div>
+                    <div class="counter">我是王小二的二儿子的二孙子</div>
+                    <div class="counter">我是王小二的二儿子的小孙子</div>
+                </div>
+            </div>
+            <div class="counter">我是王小二的三儿子</div>
+        </div>
+    </div>
+    <div class="counter">我是王小三</div>
+    <div class="counter">我是王小四
+        <div class="reset">
+            <div class="counter">我是王小四的大儿子</div>
+        </div>
+    </div>
+</div>
+<style>
+.reset { 
+  padding-left: 20px; 
+  counter-reset: wangxiaoer;
+}
+.counter:before { 
+  content: counters(wangxiaoer, '-') '. '; 
+  counter-increment: wangxiaoer;
+}
+</style>
+```
