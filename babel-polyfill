@@ -1,0 +1,62 @@
+针对babel6
+
+Installation
+npm install --save babel-polyfill
+
+项目中使用了webpack, 有多种方式可以引入polyfills:
+1、使用babel-preset-env（install+配置）
+   1.1配置babel-preset-env
+   //没有特定目标浏览器，尽可能多的兼容
+   {
+      "presets": ["env"]
+    }
+    
+   // 有目标浏览器
+   {
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": ["last 2 versions", "safari >= 7"] //target browsers
+          }
+        }]
+      ]
+    }
+    
+  1.2配置
+  1.2.1 只配置.babelrc 
+  useBuiltIns: 'usage'
+  具体如下
+  {"presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+      },
+      "useBuiltIns": "usage"
+    }],
+    "stage-2"
+  ]}
+  1.2.2 配置.babelrc 和入口文件
+    // .babelrc
+    {
+    "presets": [
+      ["env", {
+        "modules": false,
+        "targets": {
+          "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+        },
+        "useBuiltIns": "entry"
+      }],
+      "stage-2"
+    ]}
+    // src/main.js 入口文件顶部引入babel-polyfill
+    import 'babel-polyfill'
+  
+  1.3 配置webpack.config.js文件
+  如果未设置useBuiltIns或者显示置为false（.babelrc文件）, 可以配置webpack.config.js文件的入口，将babel-polyfill直接引入，具体如下
+  module.exports = {
+    entry: ["babel-polyfill", "./app/js"],
+  };
+ 
+
+2、不使用babel-preset-env，操作如1.3
