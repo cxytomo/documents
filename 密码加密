@@ -1,0 +1,33 @@
+前端用的加密方法
+1、aes-ecb
+下载：
+npm包 https://www.npmjs.com/package/aes-ecb
+npm安装
+npm install aes-ecb
+使用：
+//require
+var Cipher = require('aes-ecb');
+var keyString = 'KeyMustBe16Byte!'; //私钥
+var encrypt = Cipher.encrypt(keyString, input);
+
+// import
+import {encrypt} from 'aes-ecb';
+var salt = 'KeyMustBe16Byte!'; // 私钥
+var encrypted = encrypt(salt, input);
+
+私钥也可以通过接口动态去获取
+
+2、rsa
+github地址：https://github.com/travist/jsencrypt
+直接引用文件：
+<script src="bin/jsencrypt.min.js"></script>
+
+使用:
+var encrypt = new JSEncrypt();
+encrypt.setPublicKey($('#pubkey').val());
+var encrypted = encrypt.encrypt($('#input').val());
+
+// Decrypt with the private key...
+var decrypt = new JSEncrypt();
+decrypt.setPrivateKey($('#privkey').val());
+var uncrypted = decrypt.decrypt(encrypted);
