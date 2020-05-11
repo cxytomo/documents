@@ -1,0 +1,53 @@
+情形一：
+<el-form-item label="省份：" prop="prov">
+  <el-select
+    placeholder="请选择省份"
+    v-model="form.prov"
+    style="width: 100%;"
+  >
+    <el-option
+      v-for="(value, key) in o"
+      :key="key"
+      :label="value"
+      :value="key"
+    ></el-option>
+  </el-select>
+</el-form-item>
+
+o = {
+  0: "浙江",
+  1: "湖北",
+  2: "安徽"
+}
+
+情形二
+<el-form-item label="省份：" prop="prov">
+  <el-select
+    placeholder="请选择省份"
+    v-model="form.prov"
+    style="width: 100%;"
+    value-key="code" //文档中说这项必填，试了一下没写也不影响
+  >
+    <el-option
+      v-for="item in o"
+      :key="item.code"
+      :label="item.label"
+      :value="item.code"
+    ></el-option>
+  </el-select>
+</el-form-item>
+
+o = {
+  0: {
+    code: "001",
+    label: "浙江"
+  },
+  1: {
+    code: "002",
+    label: "湖北"
+  },
+  2: {
+    code: "002",
+    label: "安徽"
+  }
+}
