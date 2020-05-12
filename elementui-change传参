@@ -1,0 +1,21 @@
+elementui 组件的change事件，传参为空的话，默认传的是当前值
+@change="handleChange"
+
+```
+methods: {
+  handleChange(val) {
+    console.log(val) // 当前值
+  }
+}
+```
+
+如果既想得到当前值，又想传自定义参数可以参考如下
+@change="handleChange($event, params)"
+
+```
+methods: {
+  handleChange($event, params) {
+    console.log($event) // 当前值
+    console.log(params) // 自定义参数
+  }
+}
