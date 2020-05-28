@@ -1,0 +1,10 @@
+# Step1
+$('#file')[0].files[0].size
+this.files[0].size
+
+#step2
+大小换算
+const _KB = 1024;
+const _MB = _KB * 1024;
+const _GB = _MB * 1024;
+const _TB = _GB * 1024;
