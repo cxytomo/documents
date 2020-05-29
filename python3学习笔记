@@ -36,3 +36,12 @@ def person(name, age, *, city='Beijing', job):
 遗憾的是，大多数编程语言没有针对尾递归做优化，Python解释器也没有做优化，所以，即使把上面的fact(n)函数改成尾递归方式，也会导致栈溢出。
 
 !!返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。
+
+##Beautiful Soup4
+###下载
+https://www.crummy.com/software/BeautifulSoup/bs4/download/
+
+###安装
+cd  D:/python/beautifulsoup4-4.3.2
+python setup.py build
+python setup.py install
