@@ -1,0 +1,4 @@
+npm install遇到如下错误时：
+Unexpected end of JSON input while parsing near '..."解决方法
+1. npm cache clean --force
+2. npm install
