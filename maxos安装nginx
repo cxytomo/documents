@@ -1,0 +1,10 @@
+1、maxos显示nginx文件夹目录
+https://www.jianshu.com/p/9006fc495f70
+
+2、NGINX on macOS
+https://thehomeofthefuture.com/installation-guide/nginx-on-macos/
+
+brew install nginx // 安装
+sudo nginx // 启动
+sudo nginx -s stop // 停止
+code /usr/local/etc/nginx/nginx.conf // code 打开nginx.conf
