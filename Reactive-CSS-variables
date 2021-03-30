@@ -1,0 +1,54 @@
+How to reactively change css properties by code in vue
+
+https://stackoverflow.com/questions/42872002/in-vue-js-component-how-to-use-props-in-css
+https://codepen.io/richardtallent/pen/yvpERW/
+https://github.com/vuejs/vue/issues/7346
+```
+#vue
+new Vue({
+  el: '#app',
+  data: function() {
+    return {
+      baseFontSize: 1,
+      bgHoverColor: "#00cc00",
+      hoverContent: "Hovering!"
+    }
+  },
+  computed: {
+    cssProps() {
+      return {
+        '--hover-font-size': (this.baseFontSize * 2) + "em",
+        '--bg-hover-color': this.bgHoverColor,
+        '--hover-content': JSON.stringify(this.hoverContent)
+      }
+    }
+  }
+})
+
+#css
+div {
+  margin: 1em;
+}
+
+div.test:hover {
+  background-color: var(--bg-hover-color);
+  font-size: var(--hover-font-size);
+}
+
+div.test:hover::after {
+  margin-left: 1em;
+  content: var(--hover-content);
+}
+
+#html
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<div id="app" :style="cssProps">
+
+  <div>Hover text: <input type="text" v-model="hoverContent"></div>
+  <div>Hover color: <input type="color" v-model="bgHoverColor"></div>
+
+  <div class="test">Hover over me</div>
+</div>
+
+```
