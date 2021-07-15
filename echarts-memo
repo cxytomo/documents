@@ -1,0 +1,2 @@
+1. legend icon 怎么变小
+将legend.itemWidth调小，icon自然会缩小
